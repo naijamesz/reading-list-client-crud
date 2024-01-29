@@ -39,12 +39,9 @@ export default function App() {
 
   return (
     <>
-      <div className='wrapper'>
-        <BookCreate onCreate={createBook} />
-      </div>
-
-      <div className='booklist'>
+      <div className='app'><h1>Reading List</h1>
         <BookList onEdit={editBookById} books={books} onDelete={deleteBookById} />
+        <BookCreate onCreate={createBook} />
       </div>
     </>
   );

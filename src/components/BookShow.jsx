@@ -28,23 +28,26 @@ export default function BookShow({ book, onDelete, onEdit }) {
   // let content = <h2>{book.title}</h2>
   // showEdit ? content = <BookEdit book={book} onEdit={onEdit} onSubmit={handleSubmit} /> : content = <h2>{book.title}</h2>
 
-  let content = <h2>{book.title}</h2>;
+  let content = <h3 className="title">{book.title}</h3>;
   if (showEdit) {
     // content = <BookEdit onSubmit={handleSubmit} onEdit={onEdit} book={book} />;
-    content = <input className='input-edit' value={title} onChange={handleChange} />;
+    content = <input className='input is-medium is-rounded' style={{marginBottom:'.25rem'}} value={title} onChange={handleChange} />;
   }
 
   return (
-    <div className='book'>
-      <h2 className='title'>{content}</h2>
-      <form onSubmit={handleSubmit1} className='book-edit'>
-        <button className={showEdit ? 'button-edit' : 'button-update'} onClick={handleEditClick}>
-          {showEdit ? 'Update' : 'Edit'}
-        </button>
-        <button className='button-delete' onClick={handleDeleteClick}>
+    <div className='book-show'>
+    <img alt="books" src={`https://picsum.photos/seed/${book.id}/300/200`} />
+      <h3 className="title">{content}</h3>
+      <div classNames="actions">
+      <form onSubmit={handleSubmit1} className=''>
+        <button className={showEdit ? 'edit' : 'edit'} onClick={handleEditClick}>
+Edit</button>
+        <button className='delete' onClick={handleDeleteClick}>
           Delete
         </button>
       </form>
+        
+      </div>
     </div>
   );
 }

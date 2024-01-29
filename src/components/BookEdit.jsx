@@ -1,24 +1,24 @@
 // BookEdit component = child component of BookShow component.
 import { useState } from 'react';
-export default function BookEdit({ book, onEdit, onSubmit }) {
+export default function BookEdit({ book, onSubmit }) {
   const [title, setTitle] = useState(book.title);
 
-  const handleChange = event => {
-    setTitle(event.target.value);
+  const handleChange = e => {
+    setTitle(e.target.value);
   };
 
-  const handleSubmit = event => {
-    event.preventDefault();
+  const handleSubmit = e => {
+    e.preventDefault();
 
-    onEdit(book.id, title);
-    onSubmit();
+    onSubmit(book.id, title);
+    // onSubmit();
   };
 
   return (
     <>
       <form onSubmit={handleSubmit} className='book-edit'>
-        <input className='input-edit' value={title} onChange={handleChange} />
-        <button className='button-save'>Save</button>
+        <input className='input' value={title} onChange={handleChange} />
+        <button className='button is-primary'>Save</button>
       </form>
     </>
   );
