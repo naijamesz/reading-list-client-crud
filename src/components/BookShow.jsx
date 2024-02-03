@@ -1,52 +1,57 @@
 // BookShow is a Parent Component of BookEdit
 import { useState } from 'react';
-// import BookEdit from './BookEdit';
+import BookEdit from './BookEdit';
 
 export default function BookShow({ book, onDelete, onEdit }) {
+  // state
   const [showEdit, setShowEdit] = useState(false);
-  const [title, setTitle] = useState(book.title);
+  // const [title, setTitle] = useState(book.title);
+
   const handleDeleteClick = () => {
     onDelete(book.id);
   };
-  const handleEditClick = event => {
+  const handleEditClick = () => {
     setShowEdit(!showEdit);
-    setTitle(title.event.target.value);
   };
-  const handleSubmit = () => {
+  const handleSubmit = (id, newTitle) => {
     setShowEdit(false);
+    onEdit(id, newTitle);
   };
 
-  const handleSubmit1 = event => {
-    event.preventDefault();
-
-    onEdit(book.id, title);
-    onSubmit();
-  };
-  const handleChange = event => {
-    setTitle(event.target.value);
-  };
   // let content = <h2>{book.title}</h2>
   // showEdit ? content = <BookEdit book={book} onEdit={onEdit} onSubmit={handleSubmit} /> : content = <h2>{book.title}</h2>
 
-  let content = <h3 className="title">{book.title}</h3>;
+  let content = (
+    <h2 className='title' style={{ fontSize: '1.75rem', padding: '0rem 0rem' }}>
+      {book.title}
+    </h2>
+  );
   if (showEdit) {
-    // content = <BookEdit onSubmit={handleSubmit} onEdit={onEdit} book={book} />;
-    content = <input className='input is-medium is-rounded' style={{marginBottom:'.25rem'}} value={title} onChange={handleChange} />;
+    content = <BookEdit onSubmit={handleSubmit} onEdit={onEdit} book={book} />;
+    // } else {
+    //   content = (
+    //     <input
+    //       className='input is-rounded'
+    //       style={{ fontSize: '1.75rem', top: '0rem', padding: '0rem', height: '2rem', marginBottom: '.25rem' }}
+    //       value={title}
+    //       onChange={handleChange}
+    //     />
+    //   );
   }
 
   return (
     <div className='book-show'>
-    <img alt="books" src={`https://picsum.photos/seed/${book.id}/300/200`} />
-      <h3 className="title">{content}</h3>
-      <div classNames="actions">
-      <form onSubmit={handleSubmit1} className=''>
-        <button className={showEdit ? 'edit' : 'edit'} onClick={handleEditClick}>
-Edit</button>
+      <img alt='books' src={`https://picsum.photos/seed/${book.id}/300/200`} />
+      <h2 className='title' style={{ marginBottom: '0.5rem', padding: '0rem 0rem' }}>
+        {content}
+      </h2>
+      <div classNames='actions'>
+        <button className='edit' onClick={handleEditClick}>
+          Edit
+        </button>
         <button className='delete' onClick={handleDeleteClick}>
           Delete
-        </button>
-      </form>
-        
+           </button>
       </div>
     </div>
   );
