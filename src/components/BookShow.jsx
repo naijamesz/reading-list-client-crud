@@ -1,14 +1,15 @@
 // BookShow is a Parent Component of BookEdit
 import { useState } from 'react';
+import useBooksContext from '../hooks/use-books-context';
 import BookEdit from './BookEdit';
 
-export default function BookShow({ book, onDelete, onEdit }) {
+export default function BookShow({ book }) {
   // state
   const [showEdit, setShowEdit] = useState(false);
-  // const [title, setTitle] = useState(book.title);
+  const { deleteBookById } = useBooksContext();
 
   const handleDeleteClick = () => {
-    onDelete(book.id);
+    deleteBookById(book.id);
   };
   const handleEditClick = () => {
     setShowEdit(!showEdit);
@@ -27,7 +28,7 @@ export default function BookShow({ book, onDelete, onEdit }) {
     </h4>
   );
   if (showEdit) {
-    content = <BookEdit onSubmit={handleSubmit} onEdit={onEdit} book={book} />;
+    content = <BookEdit onSubmit={handleSubmit} book={book} />;
     // } else {
     //   content = (
     //     <input
