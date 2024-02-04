@@ -22,9 +22,9 @@ export default function BookShow({ book, onDelete, onEdit }) {
   // showEdit ? content = <BookEdit book={book} onEdit={onEdit} onSubmit={handleSubmit} /> : content = <h2>{book.title}</h2>
 
   let content = (
-    <p className='title' style={{ fontSize: '1.5rem', padding: '0rem 0rem', fontWeight: '400' }}>
+    <h4 className='title' style={{ fontSize: '1.5rem', padding: '0rem 0rem', fontWeight: '400' }}>
       {book.title}
-    </p>
+    </h4>
   );
   if (showEdit) {
     content = <BookEdit onSubmit={handleSubmit} onEdit={onEdit} book={book} />;
@@ -42,9 +42,9 @@ export default function BookShow({ book, onDelete, onEdit }) {
   return (
     <div className='book-show'>
       <img alt='books' src={`https://picsum.photos/seed/${book.id}/300/200`} />
-      <p className='title' style={{ marginBottom: '0.5rem', padding: '0rem 0rem' }}>
+      <h4 className='title' style={{ marginBottom: '0.5rem', padding: '0rem 0rem' }}>
         {content}
-      </p>
+      </h4>
       <div classNames='actions'>
         <button className='edit' style={{ padding: '1rem' }} onClick={handleEditClick}>
           Edit
