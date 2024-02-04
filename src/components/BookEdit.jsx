@@ -17,11 +17,11 @@ export default function BookEdit({ book, onSubmit }) {
   };
 
   return (
-    <>
+
       <form onSubmit={handleSubmit} className='book-edit'>
         <input className='input is-rounded' value={title} onChange={handleChange} />
         <button className='button is-primary'>Save</button>
       </form>
-    </>
+
   );
 }

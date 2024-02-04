@@ -14,9 +14,9 @@ export default function BookShow({ book }) {
   const handleEditClick = () => {
     setShowEdit(!showEdit);
   };
-  const handleSubmit = (id, newTitle) => {
+  const handleSubmit = () => {
     setShowEdit(false);
-    onEdit(id, newTitle);
+
   };
 
   // let content = <h2>{book.title}</h2>
@@ -47,11 +47,11 @@ export default function BookShow({ book }) {
         {content}
       </h4>
       <div classNames='actions'>
-        <button className='edit' style={{ padding: '1rem' }} onClick={handleEditClick}>
-          Edit
+        <button className='edit' onClick={handleEditClick}>
+          
         </button>
-        <button className='delete' style={{ padding: '1rem' }} onClick={handleDeleteClick}>
-          Delete
+        <button className='delete' onClick={handleDeleteClick}>
+          
         </button>
       </div>
     </div>
