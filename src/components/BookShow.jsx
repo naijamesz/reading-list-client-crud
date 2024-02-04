@@ -47,11 +47,9 @@ export default function BookShow({ book }) {
         {content}
       </h4>
       <div classNames='actions'>
-        <button className='edit' onClick={handleEditClick}>
-          
+        <button style={{zIndex:'0'}} className='edit' onClick={handleEditClick}>
         </button>
-        <button className='delete' onClick={handleDeleteClick}>
-          
+        <button style={{zIndex:'0'}} className='delete' onClick={handleDeleteClick}>
         </button>
       </div>
     </div>
